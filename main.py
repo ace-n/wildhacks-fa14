@@ -48,7 +48,11 @@ def chat():
 	if 'username' not in session:
 		return redirect('/login/')
 
-	return render_template('chat.html', data={})
+	# Chat avatars
+	user_you = User.get(User.username == session['username'])
+
+
+	return render_template('chat.html', data={'yourPic': user_you.imageUrl, 'theirPic': user_you.imageUrl })
 
 @app.route('/login/', methods=['GET'])
 def login():

@@ -57,10 +57,10 @@
 
 	// Add message functions
 	var addOtherMesg = function(mesg, tip) {
-		return otherMsgFactory({e_mesg: mesg, e_tip: tip, e_image: 'https://wiki.teamfortress.com/w/images/a/ad/Leaderboard_class_scout.png?t=20110424160241'});
+		return otherMsgFactory({e_mesg: mesg, e_tip: tip, e_image: '{{ theirPic }} '});
 	}
 	var addYouMesg = function(mesg, tip) {
-		return youMsgFactory({e_mesg: mesg, e_tip: tip, e_image: 'https://wiki.teamfortress.com/w/images/a/ad/Leaderboard_class_scout.png?t=20110424160241'});
+		return youMsgFactory({e_mesg: mesg, e_tip: tip, e_image: '{{ yourPic }}' });
 	}
 
 	// React rendering
@@ -211,5 +211,21 @@
 	}
 
 </script>
+
+<!-- Hahaha -->
+<script type="text/javascript">
+button.onclick = function(text) {
+	var tts = new SpeechSynthesisUtterance(text);
+	var voices = window.speechSynthesis.getVoices();
+	tts.lang = lang;
+	tts.pitch = 1;
+	tts.rate  = 1;
+	tts.pitch = 1;
+	tts.voice = voices[0];
+	tts.voiceURI = 'native';
+	tts.volume = 1;
+	speechSynthesis.speak(tts);
+}
+
 
 {% endblock %}
