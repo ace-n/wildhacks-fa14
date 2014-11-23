@@ -1,0 +1,117 @@
+div.chatContainer {
+	padding-left: 20px;
+	width: calc(100% - 20px);
+}
+
+/**** Past messages ****/
+/** Your messages **/
+img.youChatImage {
+	float: right;
+	margin-right: 10px;
+}
+div.youChatText {
+	float: left;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+/** Others' messages **/
+img.otherChatImage {
+	float: left;
+}
+div.otherChatText {
+	float: right;
+	margin-left: 5px;
+	padding-left: 10px;
+	padding-right: 5px;
+	margin-right: 10px;
+}
+
+/** Both way **/
+img.chatImage {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 22px;
+}
+div.chatText {
+	padding-top: 5px;
+	background-color: #F4F4F4;
+	min-height: 40px;
+	width: calc(100% - 70px);
+}
+div.chatTip {
+	float: right;
+	font-style: italic;
+	color: #ACACAC;
+	padding-right: 2px;
+	padding-bottom: 2px;
+
+	position: relative;
+	top: -1px;
+}
+div.chatMsg {
+	margin-bottom: 15px;
+	overflow: auto;
+	min-height: 60px;
+}
+
+#chatWindow {
+	height: calc(100% - 180px);
+	overflow: scroll;
+}
+
+/**** Send window ****/
+form.chatForm {
+	font-size: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: relative;
+}
+form.chatForm>textarea {
+	width: calc(100% - 45px);
+	float: left;
+	height: 50px;
+	resize: none;
+}
+form.chatForm>span {
+	padding-left: 5px;
+	padding-top: 2px;
+	float: right;
+}
+
+/**** Navbar ****/
+nav.navbar {
+	background-color: #5EB2F2;
+	border-radius: 0px;
+	color: #FFFFFF;
+}
+
+.navbar-blue .navbar-nav>li>a{
+	background-color: #5EB2F2;
+	color: #FFFFFF;
+}
+
+.navbar-blue .navbar-nav>.active>a{
+	background-color: #42A5F2;
+	color: #FFFFFF;
+}
+
+.navbar-blue .navbar-nav>li>a:focus,
+.navbar-blue .navbar-nav>li>a:hover{
+	background-color: #2699F2;
+	color: #FFFFFF;
+}
+
+span.chevron-active {
+	color: #2699F2;
+}
+span.chevron-inactive {
+	color: #D4D4D4;
+}
+
+pre {
+	border: none;
+	background-color: transparent;
+	padding: 2px 0 0 0;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+}
