@@ -68,7 +68,7 @@ def chat():
 	# Chat avatars
 	user_you = User.get(User.username == session['username'])
 
-	return render_template('chat.html', data={'yourPic': user_you.imageUrl, 'theirPic': user_you.imageUrl, 'otherUsername': name_them })
+	return render_template('chat.html', data={'yourPic': user_you.imageUrl, 'theirPic': user_you.imageUrl, 'otherUsername': name_them, 'myLanguage': user_you.language })
 
 @app.route('/login/', methods=['GET'])
 def login():
