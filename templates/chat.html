@@ -188,19 +188,17 @@
 	    r = x.responseText;
 
 	    // Update messages
-	    var i = 0;
-	    for (i=0; i<r.length(); i++) {
+	    if (0 < r.length()) {
 
 	    	// Get tooltip
-	    	msg = r[i]
-			var t = msg.time;
+			var t = r.time;
 			var h = t.getHours();
 			var m = t.getMinutes()
 			m = (m < 10 ? "0" : "") + m
 
 			var tip = (h % 12) + ":" + m + (h < 12 ? " AM" : " PM");
 
-			mesgObjects.push(addOtherMesg(msg.translated, tip));
+			mesgObjects.push(addOtherMesg(r.translated, tip));
 		}
 		updateChat();
 	}
