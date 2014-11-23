@@ -1,6 +1,6 @@
 from peewee import *
 
-mysql_db = MySQLDatabase('wildhacks', user='hacker', password='h4ckingILLini', host='lq2emfvlzo.database.windows.net:1443')
+mysql_db = MySQLDatabase('wildhacks', user='hacker', password='h4ckingILLini')
 
 class BaseModel(Model):
     """A base model that will use our MySQL database"""
