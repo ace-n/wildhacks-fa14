@@ -163,7 +163,7 @@
 	var node_username = "{{ session.username }}";
 	var node_language = "en";
 	var node_other = "{{ data.otherUsername }}";
-	var server_addr = "http://wildhacks.cloudapp.net:4730/";
+	var server_addr = "lh"http://wildhacks.cloudapp.net:4730/";
 
 	// Send a GET request
 	var node_GET = function(url) {
@@ -175,21 +175,8 @@
 	    r = x.responseText;
 
 	    // Update messages
-	    console.log(r.translated);
-	}
-
-	// Send a POST request
-	var node_POST = function(url) {
-
-		// Ping server
-		x = new XMLHttpRequest();
-	    x.open( "POST", url, false );
-	    x.send();
-	    r = x.responseText;
-
-	    // Update messages
 	    var arr = JSON.parse(r)
-	    console.log(r)
+	    console.log(arr)
 	    var i = 0;
 	    for (i = 0; i < arr.length; i++) {
 
@@ -204,6 +191,16 @@
 			mesgObjects.push(addOtherMesg(arr[i].translated, tip));
 		}
 		updateChat();
+	}
+
+	// Send a POST request
+	var node_POST = function(url) {
+
+		// Ping server
+		x = new XMLHttpRequest();
+	    x.open( "POST", url, false );
+	    x.send();
+	    r = x.responseText;
 	}
 
 	// Register user
@@ -225,7 +222,7 @@
 		node_GET(url);
 	}
 	window.setInterval(function(){
-  		node_getMessages(node_username);
+  		node_getMessages(node_other);
 	}, 2000);
 
 </script>
