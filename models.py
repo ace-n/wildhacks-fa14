@@ -1,6 +1,6 @@
 from peewee import *
 
-mysql_db = MySQLDatabase('wildhacks', user='hacker', password='h4ckingILLini')
+mysql_db = MySQLDatabase('wildhacks', user='hacker', passwd='h4ckingILLini')
 
 class BaseModel(Model):
     """A base model that will use our MySQL database"""
@@ -13,6 +13,7 @@ class User(BaseModel):
     password = CharField(max_length=64)
     imageUrl = CharField(max_length=256)
     language = CharField(max_length=16)
+
 """
 def create_tables():
     mysql_db.connect()
