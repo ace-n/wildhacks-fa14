@@ -188,7 +188,7 @@ def profile():
 
 	user = User.get(User.username == session['username'])
 
-	return render_template('profile.html', data={"imageUrl": user.imageUrl, "userName": user.username})
+	return render_template('profile.html', data={"imageUrl": user.imageUrl, "userName": user.username, "language": user.language})
 
 @app.route('/profile', methods=['POST'])
 def profile_post():
@@ -236,7 +236,7 @@ def profile_post():
 	# Get user instance
 	userObj = User.get(User.username == session['username'])
 	if userObj.password != curPw:
-		return render_template('profile.html', data={"errors": ["Please re-enter your current password."], "userName": userName, "imageUrl": imageUrl})
+		return render_template('profile.html', data={"errors": ["Please re-enter your current password."], "userName": userName, "imageUrl": imageUrl, "language": language})
 
 	# Update user instance
 	if len(newPw) != 0:
