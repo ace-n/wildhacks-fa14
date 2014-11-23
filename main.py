@@ -149,11 +149,6 @@ def register_post():
 	if not urlparse(imageUrl):
 		errors.append("Invalid Avatar URL.")
 
-	# Verify language
-	language_choices = ["enus", "eses", "frfr", "ptbr"]
-	if language not in language_choices:
-		errors.append("Language must be one of the following: " + ", ".join(language_choices))
-
 	# Verify username
 	errors.extend(verifyLength("Usernames", userName, 5, 64))
 	if not re.search(r"^\w+$", userName):
