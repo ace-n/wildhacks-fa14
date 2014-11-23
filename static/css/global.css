@@ -1,0 +1,89 @@
+/**** Impromptu CSS Logo ****/
+@font-face {
+    font-family: "Cursive";
+    src: url("/static/fonts/cursive.ttf")
+}
+
+.navbar-brand:active,
+.navbar-brand:focus,
+.navbar-brand:hover,
+.navbar-brand {
+	font-family: "Cursive";
+	font-size: 26px;
+	color: #FFFFFF;
+	background-color: #2699F2;
+	vertical-align: middle;
+	padding-top: 21px;
+	padding-left: 18px;
+	padding-right: 22px
+}
+
+/**** Navbar ****/
+nav.navbar {
+	background-color: #5EB2F2;
+	border-radius: 0px;
+	color: #FFFFFF;
+}
+
+ul.nav {
+	width: calc(100% - 70px);
+}
+
+.navbar-blue .navbar-nav>li>a{
+	font-size: 17px;
+	background-color: #5EB2F2;
+	color: #FFFFFF;
+}
+
+.navbar-blue .navbar-nav>.active>a{
+	background-color: #42A5F2;
+	color: #FFFFFF;
+}
+
+.navbar-blue .navbar-nav>li>a:focus,
+.navbar-blue .navbar-nav>li>a:hover{
+	background-color: #2699F2;
+	color: #FFFFFF;
+}
+
+div.navbar-right {
+	width: 200px;
+}
+div.navbar-right>li {
+	float: right;
+}
+
+/**** Login form ****/
+form.userdetail-form {
+	width: calc(100% - 60px);
+}
+.userdetail-actions {
+	float: right;
+	padding-bottom: 20px;
+}
+
+/**** Buttons ****/
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+	border-color: #5EA2F2;
+	background-color: #5EB2F2;
+	color: #FFFFFF;
+}
+
+.btn-default,
+.btn-default:active,
+.btn-default:focus,
+.btn-default:hover {
+	border-color: #BCBCBC;
+	background-color: #CCCCCC;
+	color: #FFFFFF;
+}
+
+/**** Error msgs ****/
+div.alert {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: 80%;
+}
