@@ -32,24 +32,36 @@
 
 		    <ul class="nav navbar-nav">
 
-		    	{% if user %}
-		        <li class="active">
-		        	<a href="#">Chat <span class="sr-only">(current)</span>
+		    	{% if session.username %}
+		        <li {% if data.section == 'chat' %}class="active"{% endif %}>
+		        	<a href="/chat">Chat
 		        	</a>
 		        </li>
 		        {% endif %}
 
-		        <li class="navbar-right">
-		        	{% if user %}
-		        		<a href="#">Profile</a>
-		        	{% else %}
+	        	{% if session.username %}
+		        	<li class="navbar-right">
+		        		<a href="/logout">Logout</a>
+		        	</li>
+		        	<li class="navbar-right {% if data.section == 'profile' %}active{% endif %}" >
+		        		<a href="/profile">Profile</a>
+		        	</li>
+	        	{% else %}
+		        	<li class="navbar-right">
 		        		<a href="/login">Login</a>
-		        	{% endif %}
-		        </li>
+		        	</li>
+	        	{% endif %}
 
 		    </ul>
 
 		</nav>
+
+		<!-- Errors -->
+		<center>
+			{% for e in data.errors %}
+				<div class="alert alert-danger">{{ e }}</div>
+			{% endfor %}
+		</center>
 
 		<!-- Content -->
 		{% block content %}
