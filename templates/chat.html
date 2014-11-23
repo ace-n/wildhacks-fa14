@@ -169,10 +169,10 @@
 	var node_GET = function(url) {
 
 		// Ping server
-		x = new XMLHttpRequest();
+		var x = new XMLHttpRequest();
 	    x.open( "GET", url, false );
 	    x.send();
-	    r = x.responseText;
+	    var r = x.responseText;
 
 	    // Update messages
 	    var arr = JSON.parse(r);
