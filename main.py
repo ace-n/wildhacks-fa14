@@ -48,11 +48,27 @@ def chat():
 	if 'username' not in session:
 		return redirect('/login/')
 
+	# Get chat buddy
+	name_them = request.args.get('user', None)
+	user_them = None
+	if name_them:
+		try:
+			user_them = User.get(User.username == name_them)
+		except:
+			pass
+
+	# Bad user - add error
+	if not user_them:
+		if name_them:
+			errors = ["Could not find user %s." % name_them]
+		else:
+			errors = ["Please specify a user to chat with."]
+		return render_template('chat.html', data={'errors': errors});
+
 	# Chat avatars
 	user_you = User.get(User.username == session['username'])
 
-
-	return render_template('chat.html', data={'yourPic': user_you.imageUrl, 'theirPic': user_you.imageUrl })
+	return render_template('chat.html', data={'yourPic': user_you.imageUrl, 'theirPic': user_you.imageUrl, 'otherUsername': name_them })
 
 @app.route('/login/', methods=['GET'])
 def login():

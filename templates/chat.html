@@ -162,7 +162,7 @@
 	// Config variables
 	var node_username = "{{ session.username }}";
 	var node_language = "en";
-	var node_other = "b";
+	var node_other = "{{ data.otherUsername }}";
 	var server_addr = "http://wildhacks.cloudapp.net:4730/";
 
 	// Send a GET request
@@ -209,6 +209,9 @@
 		var url = server_addr + "get/" + username;
 		node_GET(url);
 	}
+	window.setInterval(function(){
+  		node_getMessages(node_other);
+	}, 2000);
 
 </script>
 
