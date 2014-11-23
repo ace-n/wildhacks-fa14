@@ -7,6 +7,33 @@ app = Flask(__name__)
 app.secret_key ="erhwcnI0979UB&U(#RBuijb6753787iyO*Y@#GBIUdnIO@65rfiguyhc6476uiHODUWCBc:}{6854765678697;]p[l[pJKPIkhbvut756us5i7bHD{W=_W(D)}]]}"
 
 """
+CORS headers
+"""
+from functools import wraps
+from flask import make_response
+
+def add_response_headers(headers={}):
+    """This decorator adds the headers passed in to the response"""
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            resp = make_response(f(*args, **kwargs))
+            h = resp.headers
+            for header, value in headers.items():
+                h[header] = value
+            return resp
+        return decorated_function
+    return decorator
+
+
+def corsOk(f):
+    @wraps(f)
+    @add_response_headers({'Access-Control-Allow-Origin': '*'})
+    def decorated_function(*args, **kwargs):
+        return f(*args, **kwargs)
+    return decorated_function
+
+"""
 HTTP Pages
 """
 @app.route('/', methods=['GET'])
@@ -14,6 +41,7 @@ def home():
 	return render_template('home.html', data={})
 
 @app.route('/chat/', methods=['GET'])
+@corsOk
 def chat():
 
 	# Require login
