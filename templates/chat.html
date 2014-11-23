@@ -57,10 +57,10 @@
 
 	// Add message functions
 	var addOtherMesg = function(mesg, tip) {
-		return otherMsgFactory({e_mesg: mesg, e_tip: tip, e_image: {{ data.theirPic }} });
+		return otherMsgFactory({e_mesg: mesg, e_tip: tip, e_image: '{{ data.theirPic }}'});
 	}
 	var addYouMesg = function(mesg, tip) {
-		return youMsgFactory({e_mesg: mesg, e_tip: tip, e_image: {{ data.yourPic }} });
+		return youMsgFactory({e_mesg: mesg, e_tip: tip, e_image: '{{ data.yourPic }}'});
 	}
 
 	// React rendering
