@@ -96,7 +96,7 @@
 			mesg = chatText.val();
 
 			// Send message
-			node_sendMessage(node_other, mesg);
+			node_sendMessage(mesg);
 
 			// Get tooltip
 			var t = new Date();
@@ -218,8 +218,8 @@
 	node_registerUser(node_username, node_language);
 
 	// Send message
-	var node_sendMessage = function(target, message) {
-		var url = server_addr + "send/" + node_username + "/" + target + "/" + message;
+	var node_sendMessage = function(message) {
+		var url = server_addr + "send/" + node_other + "/" + node_username + "/" + message;
 		node_GET(url);
 	}
 
