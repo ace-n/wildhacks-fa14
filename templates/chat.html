@@ -188,7 +188,18 @@
 	    r = x.responseText;
 
 	    // Update messages
-	    console.log(r);
+	    for msg in r:
+
+	    	// Get tooltip
+			var t = msg.time;
+			var h = t.getHours();
+			var m = t.getMinutes()
+			m = (m < 10 ? "0" : "") + m
+
+			var tip = (h % 12) + ":" + m + (h < 12 ? " AM" : " PM");
+
+			mesgObjects.push(addOtherMesg(translated, tip));
+		updateChat();
 	}
 
 	// Register user
