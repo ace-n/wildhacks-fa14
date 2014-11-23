@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block top_includes %}
+<link href="/static/css/chat.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<center>
+	<form role="form" class="userdetail-form" method="POST">
+
+		<!-- Inputs -->
+		<div class="form-group">
+			<input class="form-control" name="username" placeholder="Username" value="{{ data.userName }}">
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" name="password" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<input class="form-control" name="imageUrl" placeholder="Avatar URL" value="{{ data.imageUrl }}">
+		</div>
+		<div class="form-group">
+			<input class="form-control" name="language" placeholder="Preferred Language" value="{{ data.language }}">
+		</div>
+
+		<!-- Actions -->
+		<div class="userdetail-actions">
+			<button class="btn btn-primary" type="submit">Register</button>
+			<a class="btn btn-default" href="/">Cancel</a>
+		</div>
+
+</center>
+
+{% endblock %}

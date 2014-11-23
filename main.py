@@ -54,9 +54,6 @@ def login_post():
 	userName = request.form.get("username", '')
 	pw = request.form.get("password", '')
 
-	print userName
-	print "[%s]" % pw
-
 	# Verify password
 	errors = verifyLength("Passwords", pw, 5, 64)
 
@@ -94,6 +91,7 @@ def register_post():
 	userName = request.form["username"]
 	pw = request.form["password"]
 	imageUrl = request.form["imageUrl"]
+	language = request.form["language"]
 
 	# Verify password
 	errors = verifyLength("Passwords", pw, 5, 64)
@@ -102,6 +100,11 @@ def register_post():
 	errors.extend(verifyLength("Avatar URL", imageUrl, 10, 256))
 	if not urlparse(imageUrl):
 		errors.append("Invalid Avatar URL.")
+
+	# Verify language
+	language_choices = ["enus", "eses", "frfr", "ptbr"]
+	if language not in language_choices:
+		errors.append("Language must be one of the following: " + ", ".join(language_choices))
 
 	# Verify username
 	errors.extend(verifyLength("Usernames", userName, 5, 64))
@@ -127,11 +130,10 @@ def register_post():
 		return render_template('register.html', data={"errors": errors, "userName": userName, "imageUrl": imageUrl})
 
 	# Create user instance
-	userObj = User(username=userName, password=pw, imageUrl=imageUrl)
+	userObj = User(username=userName, password=pw, imageUrl=imageUrl, language=language)
 	userObj.save()
 
 	# Redirect
-	login_user(userObj)
 	return redirect("/chat")
 
 @app.route('/profile', methods=['GET'])
@@ -153,6 +155,7 @@ def profile_post():
 	curPw = request.form["curPassword"]
 	newPw = request.form["newPassword"]
 	imageUrl = request.form["imageUrl"]
+	language = request.form["language"]
 
 	# Verify passwords
 	errors = verifyLength("Current Password", curPw, 5, 64)
@@ -163,6 +166,11 @@ def profile_post():
 	errors.extend(verifyLength("Avatar URL", imageUrl, 10, 256))
 	if not urlparse(imageUrl):
 		errors.append("Invalid Avatar URL.")
+
+	# Verify language
+	language_choices = ["enus", "eses", "frfr", "ptbr"]
+	if language not in language_choices:
+		errors.append("Language must be one of the following: " + ", ".join(language_choices)[:-2])
 
 	# Verify username
 	errors.extend(verifyLength("Username", userName, 5, 64))
@@ -198,6 +206,7 @@ def profile_post():
 	userObj.username = userName
 	session['username'] = userName
 	userObj.imageUrl = imageUrl
+	userObj.language = language
 	userObj.save()
 
 	# Redirect
